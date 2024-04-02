@@ -36,7 +36,16 @@ client.on("messageCreate", async message => {
         } else {
             await message.reply("Le format de la commande est incorrect. Utilisation: `!add @role @personne`");
         }
-    } else {
+    } 
+    else if(message.content.startsWith("!help")) {
+        try {
+        await message.reply("Ce bot permet de poser des questions à ChatGPT 3.5. Il permet également de gérer les rôles. Pour ajouter un rôle à un membre, utilisez la commande `!add @role @personne`.");}
+        catch (error) {
+            console.error(`Error: ${error}`);
+            await message.reply(`Désolé, une erreur s'est produite lors de l'ajout du rôle. ${error.message}`);
+        }
+    }
+    else {
         let conversationLOG = [{ role: 'system', content: "Je suis un bot"}];
 
         try {
